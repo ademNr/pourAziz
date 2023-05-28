@@ -1,14 +1,13 @@
-// ignore_for_file: unused_local_variable, avoid_print, body_might_complete_normally_nullable
+// ignore_for_file: unused_local_variable, avoid_print, body_might_complete_normally_nullable, prefer_const_constructors
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/view/auth/signin_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:store/views/page3.dart';
-import '../../controller/Getx_controller/variabel.dart';
-import '../../controller/commun/awesome_dialoge.dart';
-import 'sing.dart';
+
+import '../../model/commun/awoseme_dialoge.dart';
 
 // ignore: camel_case_types
 class login extends StatefulWidget {
@@ -45,26 +44,7 @@ class _loginState extends State<login> {
   Widget build(BuildContext context) {
     var mwd = MediaQuery.of(context).size.width;
     var mhd = MediaQuery.of(context).size.height;
-    /*var inputDecoration = InputDecoration(
-      prefixIcon: const Icon(Icons.lock),
-      suffixIcon: IconButton(
-        icon: Icon(
-          p ? Icons.visibility : Icons.visibility_off,
-          color: const Color.fromARGB(255, 251, 0, 0),
-        ),
-        onPressed: () {
-          setState(() {
-            p = !p;
-          });
-        },
-      ),
-      border: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
-      ),
-      hintText: 'Enter your password',
-    );*/
+
     return Scaffold(
       // ignore: avoid_unnecessary_containers
       body: SafeArea(
@@ -75,31 +55,12 @@ class _loginState extends State<login> {
             height: mhd,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('image/bg_login.jpg'),
+                image: AssetImage('assets/images/bg_login.jpg'),
                 fit: BoxFit.fill,
               ),
             ),
           ),
           Container(
-              /* decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  40,
-                ),
-                color: const Color.fromARGB(255, 225, 221, 221),
-                boxShadow: [
-                  BoxShadow(
-                      color: const Color.fromARGB(255, 206, 205, 197)
-                          .withOpacity(1),
-                      spreadRadius: 6,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
-                      blurStyle: BlurStyle.outer // changes position of shadow
-                      ),
-                ],
-              ),
-              margin: const EdgeInsets.only(
-                top: 250,
-              ),*/
               margin: const EdgeInsets.only(left: 30, right: 30),
               width: mwd,
               height: mhd,
@@ -113,7 +74,7 @@ class _loginState extends State<login> {
                           bottom: 60,
                           left: 26,
                         ),
-                        child: Text(
+                        child: const Text(
                           "Welcome back",
                           style: TextStyle(
                             color: Color.fromARGB(255, 65, 61, 61),
@@ -122,74 +83,68 @@ class _loginState extends State<login> {
                           ),
                         ),
                       ),
-                      GetBuilder(
-                        init: homecontroller(),
-                        builder: (controller) => Form(
-                          key: formstate,
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              TextFormField(
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return "please enter your email";
-                                    }
-                                  },
-                                  controller: mail,
-                                  onSaved: (value) {
-                                    mail.text = value!;
-                                  },
-                                  decoration: InputDecoration(
-                                    prefixIcon: const Icon(Icons.person),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    hintText: 'Enter your email',
-                                  )),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              TextFormField(
+                      Form(
+                        key: formstate,
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            TextFormField(
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "please enter your password";
+                                    return "please enter your email";
                                   }
                                 },
-                                controller: passeword,
-                                obscureText: p,
+                                controller: mail,
+                                onSaved: (value) {
+                                  mail.text = value!;
+                                },
                                 decoration: InputDecoration(
-                                  prefixIcon: const Icon(Icons.lock),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      p
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                      color:
-                                          const Color.fromARGB(255, 251, 0, 0),
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        p = !p;
-                                      });
-                                    },
-                                  ),
-                                  border: const OutlineInputBorder(
+                                  prefixIcon: const Icon(Icons.person),
+                                  border: OutlineInputBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(20),
                                     ),
                                   ),
-                                  hintText: 'Enter your password',
+                                  hintText: 'Enter your email',
+                                )),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            TextFormField(
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "please enter your password";
+                                }
+                              },
+                              controller: passeword,
+                              obscureText: p,
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(Icons.lock),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    p ? Icons.visibility : Icons.visibility_off,
+                                    color: const Color.fromARGB(255, 251, 0, 0),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      p = !p;
+                                    });
+                                  },
                                 ),
+                                border: const OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                hintText: 'Enter your password',
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                            ],
-                          ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
                         ),
                       ),
                       Container(
@@ -205,12 +160,10 @@ class _loginState extends State<login> {
                                           password: passeword.text);
                                   if (FirebaseAuth.instance.currentUser !=
                                       null) {
-                                    homecontroller().mail = mail.text;
+                                    mail.text = "";
                                     passeword.text = "";
 
-                                    if (credential.user != null) {
-                                      Get.toEnd(() => page3());
-                                    }
+                                    if (credential.user != null) {}
                                   }
                                 } on FirebaseAuthException catch (e) {
                                   if (e.code == 'user-not-found') {

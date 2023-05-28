@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "323966944582",
+    "project_id": "upwork-b2267",
+    "storage_bucket": "upwork-b2267.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323966944582:android:a39afc0626ce4197b85147",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChOUrilZ8EsRalIUEKnjS2Q6IQbA9qpuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
