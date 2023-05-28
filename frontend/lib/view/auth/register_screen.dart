@@ -55,7 +55,7 @@ class _loginState extends State<login> {
             height: mhd,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/bg_login.jpg'),
+                image: AssetImage('assets/image/bg_login.jpg'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -147,6 +147,9 @@ class _loginState extends State<login> {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
                       Container(
                         margin: const EdgeInsets.only(top: 20),
                         child: ElevatedButton(
@@ -198,10 +201,10 @@ class _loginState extends State<login> {
                             }),
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
-                              backgroundColor: Color.fromARGB(255, 31, 82, 6),
+                              backgroundColor: Color.fromARGB(255, 210, 24, 24),
                               shadowColor: Colors.grey,
                               elevation: 5,
-                              fixedSize: const Size(200, 35),
+                              fixedSize: const Size(200, 40),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
                             ),

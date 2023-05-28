@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/page',
-      theme: ThemeData(primaryColor: Colors.black12),
+      theme: ThemeData(primaryColor: Color.fromARGB(255, 88, 16, 16)),
       getPages: [
         GetPage(name: '/page', page: () => const login()),
       ],
