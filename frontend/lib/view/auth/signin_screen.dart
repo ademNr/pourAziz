@@ -7,10 +7,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-
 import '../../controller/homecontroller.dart';
 import '../../model/commun/decoration.dart';
 import '../../model/commun/text_style.dart';
+import 'register_screen.dart';
 
 bool isValidEmail(String email) {
   final RegExp regExp = RegExp(
@@ -93,7 +93,7 @@ class _singeState extends State<singe> {
           ),
         ),
         Center(
-            child: Container(
+            child: SizedBox(
           width: 350,
           child: ListView(
             children: [
@@ -213,6 +213,11 @@ class _singeState extends State<singe> {
 
                               if (credential.user != null) {
                                 // ignore: use_build_context_synchronously
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => login()),
+                                );
                               }
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'weak-password') {
@@ -285,6 +290,10 @@ class _singeState extends State<singe> {
                           UserCredential cred = await signInWithGoogle();
                           if (cred.user != null) {
                             // ignore: use_build_context_synchronously
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => login()),
+                            );
                           }
                         },
                         icon: Icon(Icons.mail_outline, size: 50),
@@ -298,6 +307,10 @@ class _singeState extends State<singe> {
                           UserCredential cred = await signInWithGoogle();
                           if (cred.user != null) {
                             // ignore: use_build_context_synchronously
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => login()),
+                            );
                           }
                         },
                         icon: Icon(Icons.apple, size: 50),

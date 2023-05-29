@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend/view/auth/register_screen.dart';
 import 'package:get/get.dart';
 
+import 'view/auth/reset.dart';
+
 /*import 'package:stfore/page02.dart';*/
 
 Future<void> main() async {
@@ -21,9 +23,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/page',
-      theme: ThemeData(primaryColor: Color.fromARGB(255, 88, 16, 16)),
+      theme: ThemeData(primaryColor: Color.fromARGB(255, 255, 20, 20)),
       getPages: [
-        GetPage(name: '/page', page: () => const login()),
+        GetPage(name: '/page', page: () => const RestPassword()),
       ],
     );
   }
