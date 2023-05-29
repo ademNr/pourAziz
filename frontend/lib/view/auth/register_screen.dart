@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../model/commun/awoseme_dialoge.dart';
+import 'reset.dart';
 
 // ignore: camel_case_types
 class login extends StatefulWidget {
@@ -252,12 +253,23 @@ class _loginState extends State<login> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 20),
-                        child: Text(
-                          "Forgot password?",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 65, 61, 61),
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const RestPassword()),
+                              );
+                            });
+                          },
+                          child: const Text(
+                            "Forgot password?",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 65, 61, 61),
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),

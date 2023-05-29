@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/page',
       theme: ThemeData(primaryColor: Color.fromARGB(255, 255, 20, 20)),
       getPages: [
-        GetPage(name: '/page', page: () => const RestPassword()),
+        GetPage(name: '/page', page: () => const login()),
       ],
     );
   }

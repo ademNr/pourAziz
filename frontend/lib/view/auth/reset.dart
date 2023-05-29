@@ -1,13 +1,20 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, deprecated_member_use
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/model/commun/text_style.dart';
+import 'package:frontend/view/auth/register_screen.dart';
 import 'package:get/get.dart';
 
 import '../../controller/homecontroller.dart';
+import '../../model/commun/awoseme_dialoge.dart';
 import '../../model/commun/decoration.dart';
-import 'signin_screen.dart';
+
+bool isValidEmail(String email) {
+  final RegExp regExp = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  return regExp.hasMatch(email);
+}
 
 class RestPassword extends StatefulWidget {
   const RestPassword({Key? key}) : super(key: key);
@@ -17,8 +24,8 @@ class RestPassword extends StatefulWidget {
 }
 
 class _RestPasswordState extends State<RestPassword> {
-  TextEditingController email = TextEditingController();
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  TextEditingController mail = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,24 +77,21 @@ class _RestPasswordState extends State<RestPassword> {
                     height: 20,
                   ),
                   Form(
-                      key: formstate,
-                      child: GetBuilder<homecontroller>(
-                        init: homecontroller(),
-                        builder: (controller) => Column(
-                          children: [
-                            TextFormField(
-                              controller: email,
-                              decoration: decoration_input_txt().deco(
-                                  Icon(Icons.email), "Enter your email", 20.0),
-                              validator: (value) {
-                                if (value!.isEmpty || !isValidEmail(value)) {
-                                  return "your email please";
-                                }
-                              },
-                            ),
-                          ],
-                        ),
-                      )),
+                    key: formstate,
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "your email please";
+                        }
+                      },
+                      controller: mail,
+                      onSaved: (value) {
+                        mail.text = value!;
+                      },
+                      decoration: decoration_input_txt()
+                          .deco(Icon(Icons.email), "Enter your email", 20.0),
+                    ),
+                  ),
                   SizedBox(
                     height: 30,
                   ),
@@ -103,16 +107,38 @@ class _RestPasswordState extends State<RestPassword> {
                           ),
                           onPressed: () async {
                             var formdata = formstate.currentState;
-                            if (formdata!.validate()) {}
-                            /*  await FirebaseAuth.instance
-                                .sendPasswordResetEmail(email: email)
-                                .then((value) => Navigator.of(context).pop());*/
-                            print(email);
+                            if (formdata!.validate()) {
+                              try {
+                                await FirebaseAuth.instance
+                                    .sendPasswordResetEmail(email: mail.text);
+
+                                AwesomeDialog(
+                                  context: context,
+                                  dialogType: DialogType.SUCCES,
+                                  animType: AnimType.BOTTOMSLIDE,
+                                  title: 'success',
+                                  desc: 'check your email',
+                                  btnCancelOnPress: () {},
+                                  btnOkOnPress: () {
+                                    Get.to(() => const login());
+                                  },
+                                ).show();
+                              } catch (e) {
+                                awoseme_dialoge().awoseme_dialoges(
+                                  context,
+                                  false,
+                                  DialogType.warning,
+                                  7,
+                                  AnimType.scale,
+                                  "warning",
+                                  "no user found for that email",
+                                  TextStyle(
+                                      color: Color.fromARGB(255, 172, 29, 41)),
+                                );
+                              }
+                            }
                           },
-                          child: Text(
-                            'Send Request',
-                            style: TextStyle(fontSize: 17),
-                          ))),
+                          child: const Text('Send'))),
                 ]),
           ],
         ),
