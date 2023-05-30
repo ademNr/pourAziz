@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/view/auth/register_screen.dart';
+import 'package:frontend/view/auth/signin.dart';
 import 'package:get/get.dart';
 
 import 'view/auth/reset.dart';

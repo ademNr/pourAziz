@@ -3,7 +3,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/view/auth/register_screen.dart';
+import 'package:frontend/view/auth/signin.dart';
 import 'package:get/get.dart';
 
 import '../../controller/homecontroller.dart';
@@ -41,7 +41,7 @@ class _RestPasswordState extends State<RestPassword> {
               height: mhd,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/image/bg_login.jpg'),
+                  image: AssetImage('assets/image/backg1.gif'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -78,18 +78,21 @@ class _RestPasswordState extends State<RestPassword> {
                   ),
                   Form(
                     key: formstate,
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "your email please";
-                        }
-                      },
-                      controller: mail,
-                      onSaved: (value) {
-                        mail.text = value!;
-                      },
-                      decoration: decoration_input_txt()
-                          .deco(Icon(Icons.email), "Enter your email", 20.0),
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "your email please";
+                          }
+                        },
+                        controller: mail,
+                        onSaved: (value) {
+                          mail.text = value!;
+                        },
+                        decoration: decoration_input_txt()
+                            .deco(Icon(Icons.email), "Enter your email", 20.0),
+                      ),
                     ),
                   ),
                   SizedBox(
