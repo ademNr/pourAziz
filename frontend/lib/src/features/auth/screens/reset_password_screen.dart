@@ -1,14 +1,10 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, deprecated_member_use
-
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/view/auth/signin.dart';
+import 'package:frontend/src/features/auth/screens/login_screen.dart';
+import 'package:frontend/src/widgets/awoseme_dialoge.dart';
+import 'package:frontend/src/widgets/decoration.dart';
 import 'package:get/get.dart';
-
-import '../../controller/homecontroller.dart';
-import '../../model/commun/awoseme_dialoge.dart';
-import '../../model/commun/decoration.dart';
 
 bool isValidEmail(String email) {
   final RegExp regExp = RegExp(
@@ -16,14 +12,14 @@ bool isValidEmail(String email) {
   return regExp.hasMatch(email);
 }
 
-class RestPassword extends StatefulWidget {
-  const RestPassword({Key? key}) : super(key: key);
+class RestPasswordScreen extends StatefulWidget {
+  const RestPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  State<RestPassword> createState() => _RestPasswordState();
+  State<RestPasswordScreen> createState() => _RestPasswordState();
 }
 
-class _RestPasswordState extends State<RestPassword> {
+class _RestPasswordState extends State<RestPasswordScreen> {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   TextEditingController mail = TextEditingController();
 
@@ -123,7 +119,7 @@ class _RestPasswordState extends State<RestPassword> {
                                   desc: 'check your email',
                                   btnCancelOnPress: () {},
                                   btnOkOnPress: () {
-                                    Get.to(() => const login());
+                                    Get.to(() => const LoginScreen());
                                   },
                                 ).show();
                               } catch (e) {

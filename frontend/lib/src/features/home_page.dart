@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class LoggedInPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   final String email;
 
-  const LoggedInPage({Key? key, required this.email}) : super(key: key);
+  const HomePage({Key? key, required this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +21,15 @@ class LoggedInPage extends StatelessWidget {
               color: Colors.green,
             ),
             const SizedBox(height: 20),
-            Text(
+            const Text(
               'You are logged in with:',
               style: TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 10),
             Text(
               email,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-
           ],
         ),
       ),

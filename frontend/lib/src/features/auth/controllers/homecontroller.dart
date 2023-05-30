@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class homecontroller extends GetxController {
+class HomeController extends GetxController {
   String? mail;
   String password = '';
   void add(String mail, String password) {
