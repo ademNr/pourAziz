@@ -17,8 +17,8 @@ class awoseme_dialoge {
   dynamic btnOkOnPress = null;
   dynamic btnOkColor = null;
   dynamic btnCancelColor = null;
-  String btnCancelText = "";
-  awoseme_dialoges(
+  String btnCancelText = '';
+  Future awoseme_dialoges(
     context,
     headerAnimationLoop,
     DialogType,

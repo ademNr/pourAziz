@@ -1,35 +1,23 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/view/auth/recaptchaPage.dart';
-import 'package:frontend/view/auth/signin.dart';
-import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
-import 'package:get/get.dart';
-
-import 'view/auth/reset.dart';
-
-/*import 'package:stfore/page02.dart';*/
+import 'firebase_options.dart';
+import 'src/app.dart';
+import 'src/services/recaptcha.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // Add Firebase Initialization
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/page',
-      theme: ThemeData(primaryColor: Color.fromARGB(255, 255, 20, 20)),
-      getPages: [
-        GetPage(name: '/page', page: () => const Recaptcha()),
-      ],
-    );
+  // Only for web
+  if (kIsWeb) {
+    final recaptchaService = RecaptchaService();
+    final recaptcha = await recaptchaService.init();
+    print('recaptcha $recaptcha');
   }
+
+  runApp(const App());
 }

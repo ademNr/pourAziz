@@ -1,12 +1,10 @@
-// ignore_for_file: unnecessary_this
-
 import 'package:flutter/material.dart';
 
-class decoration_input_txt {
+class DecorationInputTxt {
   String hint = '';
   double Border = 20;
   Icon icon = Icon(Icons.person);
-  deco(Icon, String hint, double border) {
+  InputDecoration deco(Icon, String hint, double border) {
     this.Border = border;
     this.hint = hint;
     this.icon = Icon;
