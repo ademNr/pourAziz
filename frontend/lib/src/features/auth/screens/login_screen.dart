@@ -2,13 +2,13 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/src/features/auth/screens/register_screen.dart';
-import 'package:frontend/src/features/auth/screens/reset_password_screen.dart';
-import 'package:frontend/src/features/home_page.dart';
-import 'package:frontend/src/widgets/awoseme_dialoge.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'register_screen.dart';
+import 'reset_password_screen.dart';
+import '../../home_page.dart';
+import '../../../widgets/awoseme_dialoge.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                         margin: EdgeInsets.only(top: 100),
                         child: const Text(
-                          "Welcome back",
+                          'Welcome back',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 40,
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextFormField(
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "please enter your email";
+                                    return 'please enter your email';
                                   }
                                 },
                                 controller: mail,
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextFormField(
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "please enter your password";
+                                  return 'please enter your password';
                                 }
                               },
                               controller: passeword,
@@ -184,8 +184,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           password: passeword.text);
                                   if (FirebaseAuth.instance.currentUser !=
                                       null) {
-                                    mail.text = "";
-                                    passeword.text = "";
+                                    mail.text = '';
+                                    passeword.text = '';
 
                                     if (credential.user != null) {
                                       Get.to(HomeScreen(
@@ -202,8 +202,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       DialogType.warning,
                                       7,
                                       AnimType.scale,
-                                      "warning",
-                                      "no user found for that email",
+                                      'warning',
+                                      'no user found for that email',
                                       TextStyle(
                                           color:
                                               Color.fromARGB(255, 172, 29, 41)),
@@ -215,8 +215,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       DialogType.error,
                                       7,
                                       AnimType.scale,
-                                      "warning",
-                                      "password is wrong",
+                                      'warning',
+                                      'password is wrong',
                                       TextStyle(
                                           color:
                                               Color.fromARGB(255, 172, 29, 29)),
@@ -228,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue),
                             child: const Text(
-                              "Log in",
+                              'Log in',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             )),
@@ -258,14 +258,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 children: [
                                   Container(
                                     child: Image.asset(
-                                        "assets/image/google_icon.png",
+                                        'assets/image/google_icon.png',
                                         scale: 4),
                                   ),
                                   const SizedBox(
                                     width: 30,
                                   ),
-                                  Text(
-                                    "Sign in with google",
+                                  const Text(
+                                    'Sign in with google',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15,
@@ -303,7 +303,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   children: [
                                     Container(
                                       child: Image.asset(
-                                        "assets/image/apple_icon.png",
+                                        'assets/image/apple_icon.png',
                                         scale: 2,
                                         color: Colors.white,
                                       ),
@@ -312,8 +312,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     SizedBox(
                                       width: 30,
                                     ),
-                                    Text(
-                                      "Sign in with apple",
+                                    const Text(
+                                      'Sign in with apple',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15,
@@ -338,7 +338,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           },
                           child: const Text(
-                            "Forgot password?",
+                            'Forgot password?',
                             style: TextStyle(
                               color: Color.fromARGB(255, 65, 61, 61),
                               fontSize: 15,
@@ -361,7 +361,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 });
                               },
                               child: const Text(
-                                "Create a new account",
+                                'Create a new account',
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 65, 61, 61),
                                   fontSize: 15,

@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/src/features/auth/controllers/auth_controller.dart';
-import 'package:frontend/src/features/auth/screens/login_screen.dart';
 import 'package:frontend/src/widgets/decoration.dart';
-import 'package:frontend/src/widgets/text_style.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
+import '../../../widgets/text_widget.dart';
+import '../controllers/auth_controller.dart';
+import 'login_screen.dart';
+
 bool isValidEmail(String email) {
-  final RegExp regExp = RegExp(
+  final regExp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   return regExp.hasMatch(email);
 }
@@ -141,14 +142,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 100),
-                    child: textstyle().textStyle(
-                      "Create Account",
-                      Colors.black,
-                      40,
-                      FontWeight.w900,
-                    ),
-                  ),
+                      margin: EdgeInsets.only(top: 100),
+                      child: TextWidget(
+                        text: 'Create Account',
+                        color: Colors.black,
+                        size: 40,
+                        fontWeight: FontWeight.w900,
+                      )),
                 ),
                 Form(
                   key: formstate,
@@ -165,13 +165,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (value!.isEmpty ||
                                 value.length < 3 ||
                                 value.length > 7) {
-                              return "Please enter your name";
+                              return 'Please enter your name';
                             }
                             return null;
                           },
-                          decoration: decoration_input_txt().deco(
+                          decoration: DecorationInputTxt().deco(
                             Icon(Icons.person),
-                            "Enter your name",
+                            'Enter your name',
                             20.0,
                           ),
                         ),
@@ -180,14 +180,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         TextFormField(
                           controller: email,
-                          decoration: decoration_input_txt().deco(
+                          decoration: DecorationInputTxt().deco(
                             Icon(Icons.email),
-                            "Enter your email",
+                            'Enter your email',
                             20.0,
                           ),
                           validator: (value) {
                             if (value!.isEmpty || !isValidEmail(value)) {
-                              return "Please enter a valid email";
+                              return 'Please enter a valid email';
                             }
                             return null;
                           },
@@ -320,14 +320,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              child: Image.asset("assets/image/google_icon.png",
+                              child: Image.asset('assets/image/google_icon.png',
                                   scale: 4),
                             ),
                             SizedBox(
                               width: 30,
                             ),
-                            Text(
-                              "Sign up with google",
+                            const Text(
+                              'Sign up with google',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
@@ -364,7 +364,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             children: [
                               Container(
                                 child: Image.asset(
-                                  "assets/image/apple_icon.png",
+                                  'assets/image/apple_icon.png',
                                   scale: 2,
                                   color: Colors.white,
                                 ),
@@ -373,8 +373,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               SizedBox(
                                 width: 30,
                               ),
-                              Text(
-                                "Sign up with apple",
+                              const Text(
+                                'Sign up with apple',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
@@ -387,9 +387,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Get.to(() => LoginScreen());
+                    Get.to(() => const LoginScreen());
                   },
-                  child: const Text("Already have an account?"),
+                  child: const Text('Already have an account?'),
                 ),
               ],
             ),

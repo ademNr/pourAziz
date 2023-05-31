@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/src/features/auth/screens/login_screen.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter_plus/webview_flutter_plus.dart';
+
+import '../screens/login_screen.dart';
 
 class Recaptcha extends StatefulWidget {
   const Recaptcha({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _RecaptchaState extends State<Recaptcha> {
       child: WebViewPlus(
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
-          controller.loadUrl("assets/webpages/index.html");
+          controller.loadUrl('assets/webpages/index.html');
         },
         javascriptChannels: {
           JavascriptChannel(

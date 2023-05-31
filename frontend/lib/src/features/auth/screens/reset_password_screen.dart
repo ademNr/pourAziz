@@ -3,11 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/src/features/auth/screens/login_screen.dart';
 import 'package:frontend/src/widgets/awoseme_dialoge.dart';
-import 'package:frontend/src/widgets/decoration.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/decoration.dart';
+
 bool isValidEmail(String email) {
-  final RegExp regExp = RegExp(
+  final regExp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   return regExp.hasMatch(email);
 }
@@ -79,15 +80,15 @@ class _RestPasswordState extends State<RestPasswordScreen> {
                       child: TextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "your email please";
+                            return 'your email please';
                           }
                         },
                         controller: mail,
                         onSaved: (value) {
                           mail.text = value!;
                         },
-                        decoration: decoration_input_txt()
-                            .deco(Icon(Icons.email), "Enter your email", 20.0),
+                        decoration: DecorationInputTxt().deco(
+                            const Icon(Icons.email), 'Enter your email', 20.0),
                       ),
                     ),
                   ),
@@ -129,9 +130,9 @@ class _RestPasswordState extends State<RestPasswordScreen> {
                                   DialogType.warning,
                                   7,
                                   AnimType.scale,
-                                  "warning",
-                                  "no user found for that email",
-                                  TextStyle(
+                                  'warning',
+                                  'no user found for that email',
+                                  const TextStyle(
                                       color: Color.fromARGB(255, 172, 29, 41)),
                                 );
                               }
