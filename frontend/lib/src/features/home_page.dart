@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   final String email;
 
-  const HomePage({Key? key, required this.email}) : super(key: key);
+  const HomeScreen({Key? key, required this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

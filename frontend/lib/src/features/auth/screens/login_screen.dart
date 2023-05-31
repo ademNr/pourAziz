@@ -188,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     passeword.text = "";
 
                                     if (credential.user != null) {
-                                      Get.to(HomePage(
+                                      Get.to(HomeScreen(
                                         email:
                                             credential.user!.email.toString(),
                                       ));

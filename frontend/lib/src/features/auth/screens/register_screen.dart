@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/src/features/auth/controllers/auth_controller.dart';
 import 'package:frontend/src/features/auth/screens/login_screen.dart';
 import 'package:frontend/src/widgets/decoration.dart';
 import 'package:frontend/src/widgets/text_style.dart';
@@ -8,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import '../controllers/homecontroller.dart';
 
 bool isValidEmail(String email) {
   final RegExp regExp = RegExp(
@@ -152,8 +152,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 Form(
                   key: formstate,
-                  child: GetBuilder<HomeController>(
-                    init: HomeController(),
+                  child: GetBuilder<AuthController>(
+                    init: AuthController(),
                     builder: (controller) => Column(
                       children: [
                         const SizedBox(
@@ -207,7 +207,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                GetBuilder<HomeController>(
+                GetBuilder<AuthController>(
                   builder: (controller) => Container(
                     margin: const EdgeInsets.only(top: 20, left: 50, right: 50),
                     height: 50,

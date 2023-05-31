@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import 'features/auth/ui/recaptcha.dart';
+import 'features/auth/screens/login_screen.dart';
+import 'features/auth/screens/register_screen.dart';
 
 final getPages = [
-  GetPage(name: '/page', page: () => const Recaptcha()),
-  GetPage(name: '/page', page: () => const Recaptcha()),
-  GetPage(name: '/page', page: () => const Recaptcha()),
+  GetPage(name: '/login', page: () => const LoginScreen()),
+  GetPage(name: '/register', page: () => const RegisterScreen()),
 ];
